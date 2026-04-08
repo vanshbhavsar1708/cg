@@ -322,6 +322,10 @@
         }
         
         @media (hover: hover) and (pointer: fine) {
+            #controls-hint {
+                display: block;
+            }
+            
             #left-controls, #right-controls {
                 opacity: 0.5;
             }
@@ -330,15 +334,211 @@
                 height: 60px;
                 font-size: 22px;
             }
+            
+            /* Don't apply desktop styling in landscape mobile */
+            @media (orientation: landscape) and (max-height: 700px) {
+                #left-controls, #right-controls {
+                    opacity: 1;
+                }
+                
+                .touch-btn {
+                    width: clamp(48px, 10vw, 65px);
+                    height: clamp(48px, 10vw, 65px);
+                    font-size: clamp(18px, 5vw, 26px);
+                }
+            }
         }
         
+        /* ===== MOBILE LANDSCAPE OPTIMIZATION ===== */
+        @media (orientation: landscape) and (max-height: 700px) {
+            html, body {
+                width: 100%;
+                height: 100vh;
+                overflow: hidden;
+            }
+
+            #info {
+                top: 4px;
+                left: 4px;
+                right: 4px;
+                padding: 6px 10px;
+                font-size: 11px;
+                gap: clamp(6px, 1.5vw, 12px);
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                overflow-x: auto;
+            }
+
+            .dashboard-item {
+                min-width: 65px;
+                flex-direction: row;
+                gap: 4px;
+                white-space: nowrap;
+            }
+
+            #mission-text {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0,0,0,0.85);
+                font-size: clamp(16px, 3.5vh, 20px);
+                padding: 12px 24px;
+                border-radius: 25px;
+                backdrop-filter: blur(6px);
+                z-index: 15;
+            }
+
+            #coin-counter {
+                top: 4px;
+                right: 4px;
+                font-size: clamp(16px, 2.5vh, 20px);
+                padding: 6px 12px;
+            }
+
+            #minimap {
+                top: 50px;
+                right: 10px;
+                width: 110px;
+                height: 110px;
+                border-radius: 8px;
+            }
+
+            .touch-btn {
+                width: clamp(48px, 10vw, 65px);
+                height: clamp(48px, 10vw, 65px);
+                font-size: clamp(18px, 5vw, 26px);
+                border-width: 1.5px;
+            }
+
+            #left-controls {
+                bottom: clamp(8px, 2.5vh, 15px);
+                left: clamp(8px, 2vw, 15px);
+                gap: 5px;
+            }
+
+            #right-controls {
+                bottom: clamp(8px, 2.5vh, 15px);
+                right: clamp(8px, 2vw, 15px);
+                gap: 5px;
+            }
+
+            #sound-toggle {
+                bottom: clamp(8px, 2.5vh, 15px);
+                right: clamp(8px, 2vw, 15px);
+                bottom: auto;
+                top: 4px;
+                right: clamp(125px, 40vw, 150px);
+                font-size: 10px;
+                padding: 6px 10px;
+                z-index: 30;
+            }
+
+            #controls-hint {
+                bottom: clamp(8px, 2.5vh, 15px);
+                left: clamp(80px, 25vw, 120px);
+                font-size: 9px;
+                padding: 4px 8px;
+            }
+        }
+
         @media (orientation: landscape) and (max-height: 500px) {
-            #info { top: 5px; padding: 4px 8px; font-size: 11px; }
-            #mission-text { top: 25px; font-size: 12px; }
-            #minimap { width: 120px; height: 120px; top: 40px; }
-            .touch-btn { width: 50px; height: 50px; font-size: 18px; }
-            #sound-toggle { bottom: 10px; font-size: 11px; padding: 4px 8px; }
-            #left-controls, #right-controls { gap: 6px; }
+            #info {
+                top: 3px;
+                padding: 4px 8px;
+                font-size: 10px;
+                gap: 4px;
+            }
+
+            .dashboard-item {
+                min-width: 55px;
+                gap: 3px;
+            }
+
+            .label {
+                font-size: 0.65em;
+            }
+
+            .value {
+                font-size: 1.2em;
+            }
+
+            #mission-text {
+                top: 50%;
+                font-size: 13px;
+                padding: 8px 16px;
+                display: none;
+            }
+
+            #coin-counter {
+                top: 3px;
+                right: 3px;
+                font-size: 14px;
+                padding: 4px 8px;
+            }
+
+            #minimap {
+                top: 40px;
+                right: 5px;
+                width: 100px;
+                height: 100px;
+                display: none;
+            }
+
+            .touch-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 16px;
+                border-width: 1px;
+            }
+
+            #left-controls {
+                bottom: 6px;
+                left: 6px;
+                gap: 4px;
+            }
+
+            #right-controls {
+                bottom: 6px;
+                right: 6px;
+                gap: 4px;
+            }
+
+            #sound-toggle {
+                top: 3px;
+                right: 100px;
+                font-size: 9px;
+                padding: 4px 6px;
+            }
+
+            #controls-hint {
+                display: none !important;
+            }
+        }
+
+        @media (orientation: landscape) and (max-height: 450px) {
+            .dashboard-item {
+                min-width: 50px;
+            }
+
+            .touch-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 14px;
+            }
+
+            #fuel-bar, #damage-bar {
+                width: 40px;
+                height: 6px;
+            }
+
+            #left-controls {
+                gap: 3px;
+            }
+
+            #right-controls {
+                gap: 3px;
+            }
         }
         
         @media (orientation: portrait) {
@@ -346,6 +546,9 @@
                 flex-direction: column;
                 gap: clamp(4px, 1.5vw, 10px);
                 max-width: 90vw;
+                top: 5px;
+                left: 50%;
+                transform: translateX(-50%);
             }
             .dashboard-item {
                 min-width: auto;
@@ -353,12 +556,51 @@
                 gap: 8px;
                 align-items: center;
             }
+            
+            #mission-text {
+                top: 105px;
+            }
+            
+            #coin-counter {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            
+            #minimap {
+                display: none;
+            }
+            
+            #left-controls {
+                bottom: 80px;
+                left: 8px;
+                flex-direction: column;
+            }
+            
+            #right-controls {
+                bottom: 80px;
+                right: 8px;
+            }
         }
         
         @media (max-height: 600px) {
-            #info { top: 8px; padding: 6px 12px; }
-            #mission-text { top: 35px; }
-            #minimap { display: none; }
+            #info { 
+                top: 8px; 
+                padding: 6px 12px; 
+                font-size: 12px;
+            }
+            #mission-text { 
+                top: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                font-size: 14px;
+            }
+            #minimap { 
+                display: none; 
+            }
+            
+            #left-controls, #right-controls {
+                bottom: 12px;
+            }
         }
         
         @media (max-width: 500px) {
